@@ -1,1 +1,70 @@
+# 1. FROM
+FROM <image_name>:<tag>
+# Specifies the base image to build the new Docker image.
+# Example: FROM ubuntu:20.04 sets the base image as Ubuntu 20.04.
+
+# 2. LABEL
+LABEL <key>=<value>
+# Adds metadata to the image, such as description, version, or author information.
+# Example: LABEL maintainer="your-email@example.com"
+
+# 3. RUN
+RUN <command>
+# Executes commands in the shell and creates a new layer in the Docker image.
+# Example: RUN apt-get update && apt-get install -y nginx installs Nginx.
+
+# 4. COPY
+COPY <source_path> <destination_path>
+# Copies files or directories from the host machine into the container.
+# Example: COPY ./app /app copies the contents of the './app' directory into '/app'.
+
+# 5. ADD
+ADD <source_path> <destination_path>
+# Similar to COPY but can also handle tar files and remote URLs.
+# Example: ADD ./archive.tar.gz /data/ extracts the tar file into '/data'.
+
+# 6. WORKDIR
+WORKDIR <path>
+# Sets the working directory for subsequent instructions in the Dockerfile.
+# Example: WORKDIR /app sets '/app' as the working directory inside the container.
+
+# 7. CMD
+CMD ["executable", "param1", "param2"]
+# Defines the default command that will be executed when the container starts.
+# Example: CMD ["python", "app.py"] starts the Python application.
+
+# 8. ENTRYPOINT
+ENTRYPOINT ["executable", "param1", "param2"]
+# Sets the executable that will always run, regardless of the command passed at runtime.
+# Example: ENTRYPOINT ["nginx", "-g", "daemon off;"] runs Nginx in the foreground.
+
+# 9. ENV
+ENV <key>=<value>
+# Sets environment variables inside the container.
+# Example: ENV APP_ENV=production sets the environment variable.
+
+# 10. EXPOSE
+EXPOSE <port_number>
+# Informs Docker that the container will listen on the specified network port at runtime.
+# Example: EXPOSE 80 exposes port 80 for HTTP traffic.
+
+# 11. VOLUME
+VOLUME ["<path>"]
+# Creates a mount point with the specified path inside the container.
+# Example: VOLUME ["/data"] creates a volume at '/data' inside the container.
+
+# 12. ARG
+ARG <variable_name>[=<default_value>]
+# Defines a build-time argument, which can be passed when building the Docker image.
+# Example: ARG version=1.0 defines a 'version' argument with a default value.
+
+# 13. USER
+USER <username_or_UID>
+# Specifies the user to use when running the container.
+# Example: USER nginx sets the user as 'nginx' for running the container.
+
+# 14. SHELL
+SHELL ["executable", "parameters"]
+# Specifies the shell to use for running commands in the Dockerfile.
+# Example: SHELL ["/bin/bash", "-c"] sets the shell as Bash.
 
