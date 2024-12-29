@@ -1,1 +1,28 @@
+# 1. List all Docker networks
+docker network ls
+# Description: Lists all networks created in Docker, including default ones like `bridge`, `host`, and `none`.
+
+# 2. Create a custom Docker network
+docker network create <network_name>
+# Description: Creates a new custom network. You can specify additional options like the network driver (e.g., `bridge`, `overlay`).
+
+# 3. Inspect a Docker network
+docker network inspect <network_name>
+# Description: Displays detailed information about a specific network, including connected containers and network settings.
+
+# 4. Connect a container to a network
+docker network connect <network_name> <container_name>
+# Description: Connects an existing container to a specified Docker network.
+
+# 5. Disconnect a container from a network
+docker network disconnect <network_name> <container_name>
+# Description: Disconnects a container from a specified Docker network.
+
+# 6. Remove a Docker network
+docker network rm <network_name>
+# Description: Removes a custom Docker network. This command will fail if the network is in use by any containers.
+
+# 7. Create a Docker network with a specific driver
+docker network create --driver <driver_name> <network_name>
+# Description: Creates a Docker network with a specified driver (e.g., `bridge`, `overlay`, `macvlan`, etc.).
 
