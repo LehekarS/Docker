@@ -1,1 +1,39 @@
+version: '3.8'   # Specifies the version of Docker Compose to use.
+                  # '3.8' is a common version that works well with Docker's features.
+
+services:
+  # Node.js application service
+  app:
+    image: node:14   # Use the official Node.js 14 image from Docker Hub
+    container_name: node-app   # Assign a name to the container (helps with identification)
+    working_dir: /app   # Set the working directory inside the container to '/app'
+    volumes:
+      - ./app:/app   # Mount the 'app' directory from the host machine to the container's '/app' directory
+    ports:
+      - "3000:3000"   # Expose port 3000 to make the application accessible from the host
+    networks:
+      - app-network   # Attach the container to a custom network (defined below)
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/mydatabase   # Set environment variables for the application (e.g., MongoDB URI)
+    command: npm start   # The command that runs when the container starts, here it starts the Node.js application
+
+  # MongoDB service
+  mongo:
+    image: mongo:latest   # Use the official MongoDB image from Docker Hub (latest version)
+    container_name: mongo-db   # Name the container 'mongo-db'
+    ports:
+      - "27017:27017"   # Expose MongoDB's default port (27017) so it can be accessed from the host machine
+    networks:
+      - app-network   # Attach the MongoDB container to the same network as the Node.js app
+    volumes:
+      - mongo-data:/data/db   # Create a volume to persist MongoDB data between container restarts
+
+# Define named volumes
+volumes:
+  mongo-data:   # Volume for MongoDB data, ensuring data is stored outside the container
+
+# Define custom network
+networks:
+  app-network:
+    driver: bridge   # Use the 'bridge' driver for the network, which is the default and enables communication between containers
 
