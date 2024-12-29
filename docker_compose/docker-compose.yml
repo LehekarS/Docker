@@ -37,3 +37,7 @@ networks:
   app-network:
     driver: bridge   # Use the 'bridge' driver for the network, which is the default and enables communication between containers
 
+
+
+# docker-compose up
+
