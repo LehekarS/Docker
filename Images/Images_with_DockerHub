@@ -1,1 +1,24 @@
+# 1. Authenticate Docker to Docker Hub
+docker login
+# Prompts for username and password to authenticate with Docker Hub.
+
+# 2. Create a Repository in Docker Hub
+# Go to Docker Hub web interface and create a repository manually.
+# (No direct CLI command to create repositories in Docker Hub)
+
+# 3. Build and Tag an Image for Docker Hub
+docker build -t <image_name>:<tag> .
+docker tag <image_name>:<tag> <dockerhub_username>/<repository_name>:<tag>
+# Example: docker build -t my-app:1.0 . && docker tag my-app:1.0 myusername/my-repo:1.0
+# Builds a Docker image and tags it for Docker Hub.
+
+# 4. Push an Image to Docker Hub
+docker push <dockerhub_username>/<repository_name>:<tag>
+# Example: docker push myusername/my-repo:1.0
+# Pushes a tagged Docker image to Docker Hub.
+
+# 5. Pull an Image from Docker Hub
+docker pull <dockerhub_username>/<repository_name>:<tag>
+# Example: docker pull myusername/my-repo:1.0
+# Pulls an image from Docker Hub.
 
