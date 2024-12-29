@@ -1,1 +1,36 @@
+# Step 1: Create an ECR Repository
+aws ecr create-repository --repository-name <repository-name>
+# Creates a new repository in Amazon ECR to store Docker images.
+
+# Step 2: Authenticate Docker to Your ECR
+aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region>.amazonaws.com
+# Authenticates Docker to interact with AWS ECR using your AWS credentials.
+
+# Step 3: Build Your Docker Image
+docker build -t <image-name> .
+# Builds a Docker image from the Dockerfile in the current directory.
+
+# Step 4: Tag the Docker Image for ECR
+docker tag <image-name>:<tag> <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:<tag>
+# Tags your Docker image to match the format needed by AWS ECR.
+
+# Step 5: Push the Docker Image to ECR
+docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:<tag>
+# Pushes the tagged Docker image to your ECR repository.
+
+# Step 6: List Images in ECR
+aws ecr list-images --repository-name <repository-name> --region <region>
+# Lists all Docker images stored in the specified ECR repository.
+
+# Step 7: Pull a Docker Image from ECR
+docker pull <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:<tag>
+# Pulls a Docker image from the specified ECR repository.
+
+# Step 8: Delete a Docker Image from ECR
+aws ecr batch-delete-image --repository-name <repository-name> --image-ids imageTag=<tag> --region <region>
+# Deletes a Docker image from the specified ECR repository using its image tag.
+
+# Step 9: Delete the ECR Repository
+aws ecr delete-repository --repository-name <repository-name> --region <region>
+# Deletes the specified ECR repository, along with all images inside it.
 
