@@ -16,6 +16,7 @@ COPY . .
 # Expose port 5000 for the Flask application (or your chosen port)
 EXPOSE 5000
 
-# Define the default command to run the app
-CMD ["python", "app.py"]
+# Use Gunicorn to serve the app (for production)
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+
 
