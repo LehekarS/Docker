@@ -1,1 +1,35 @@
+# Step 1: Create a Docker Hub Account
+# Visit https://hub.docker.com/ and create an account if you don’t already have one.
+
+# Step 2: Log in to Docker Hub via Docker CLI
+docker login
+# Logs you into Docker Hub using your Docker Hub credentials (username and password).
+
+# Step 3: Build Your Docker Image
+docker build -t <username>/<image-name>:<tag> .
+# Builds a Docker image from the Dockerfile in the current directory. Tag it with your Docker Hub username, image name, and version tag.
+
+# Step 4: Tag the Docker Image for Docker Hub
+docker tag <image-name>:<tag> <username>/<image-name>:<tag>
+# Tags the locally built Docker image to the format required for Docker Hub.
+
+# Step 5: Push the Docker Image to Docker Hub
+docker push <username>/<image-name>:<tag>
+# Pushes the tagged Docker image to your Docker Hub repository.
+
+# Step 6: List Your Docker Images Locally
+docker images
+# Lists all the Docker images stored locally on your machine.
+
+# Step 7: Pull a Docker Image from Docker Hub
+docker pull <username>/<image-name>:<tag>
+# Pulls a Docker image from Docker Hub.
+
+# Step 8: Delete a Local Docker Image
+docker rmi <image-name>:<tag>
+# Deletes a local Docker image from your machine.
+
+# Step 9: Remove a Docker Image from Docker Hub
+# Visit your Docker Hub repository page and manually delete images, or use the Docker Hub web interface.
+# Currently, Docker Hub does not have a command line tool for directly deleting images from the registry.
 
