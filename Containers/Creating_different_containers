@@ -1,1 +1,32 @@
+# Step 1: Create a Nginx Container
+docker run -d --name nginx-container -p 80:80 nginx
+# Runs an Nginx web server container in detached mode and maps port 80 on the host to port 80 inside the container.
+# Example: docker run -d --name nginx-container -p 80:80 nginx
+
+# Step 2: Create a MySQL Container
+docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:latest
+# Runs a MySQL container in detached mode, sets a root password, and maps port 3306 on the host to the same port in the container.
+# Example: docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:latest
+
+# Step 3: Create a PHP-FPM Container
+docker run -d --name php-fpm-container -p 9000:9000 php:fpm
+# Runs a PHP-FPM container in detached mode and maps port 9000 on the host to port 9000 in the container.
+# Example: docker run -d --name php-fpm-container -p 9000:9000 php:fpm
+
+# Step 4: Create a WordPress Container with MySQL
+docker run -d --name wordpress-container -p 8080:80 -e WORDPRESS_DB_HOST=localhost:3306 -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root wordpress
+# Runs a WordPress container in detached mode and maps port 8080 on the host to port 80 inside the container.
+# Example: docker run -d --name wordpress-container -p 8080:80 -e WORDPRESS_DB_HOST=localhost:3306 -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root wordpress
+
+# Step 5: Create a Node.js Container
+docker run -d --name nodejs-container -p 3000:3000 node:latest
+# Runs a Node.js container in detached mode and maps port 3000 on the host to port 3000 inside the container.
+# Example: docker run -d --name nodejs-container -p 3000:3000 node:latest
+
+# Step 6: Create a Python (Flask) Container
+docker run -d --name flask-container -p 5000:5000 python:3.8-slim bash -c "pip install flask && python -m flask run --host=0.0.0.0"
+# Runs a Python Flask container in detached mode, installs Flask, and starts the Flask web server.
+# Example: docker run -d --name flask-container -p 5000:5000 python:3.8-slim bash -c "pip install flask && python -m flask run --host=0.0.0.0"
+
+
 
