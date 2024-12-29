@@ -1,1 +1,35 @@
+# 1. List All Docker Images
+docker images
+docker image ls
+# Lists all Docker images available on the local system, showing image ID, size, repository, and tag.
+
+# 2. Pull an Image from Docker Hub
+docker pull <image_name>:<tag>
+# Example: docker pull nginx:latest
+# Pulls a specific image (e.g., Nginx) from Docker Hub or another registry.
+
+# 3. Build an Image from a Dockerfile
+docker build -t <image_name>:<tag> <path_to_dockerfile>
+# Example: docker build -t myapp:1.0 .
+# Builds a Docker image from a Dockerfile located at the specified path.
+
+# 4. Remove a Docker Image
+docker rmi <image_name>:<tag>
+# Example: docker rmi nginx:latest
+# Removes the specified image from your local system.
+
+# 5. Tag an Image
+docker tag <image_name>:<old_tag> <new_image_name>:<new_tag>
+# Example: docker tag nginx:latest nginx:myversion
+# Tags an existing image with a new tag or name.
+
+# 6. Push an Image to Docker Hub
+docker push <image_name>:<tag>
+# Example: docker push nginx:latest
+# Pushes a local image to Docker Hub or another registry.
+
+# 7. Inspect an Image
+docker inspect <image_name>:<tag>
+# Example: docker inspect nginx:latest
+# Displays detailed information about a specific image, including its configuration and layers.
 
