@@ -1,1 +1,32 @@
+# 1. List all Docker volumes
+docker volume ls
+# Description: Lists all volumes created in Docker.
+
+# 2. Create a Docker volume
+docker volume create <volume_name>
+# Description: Creates a new volume. You can specify additional options like volume driver.
+
+# 3. Inspect a Docker volume
+docker volume inspect <volume_name>
+# Description: Displays detailed information about a specific volume, including mount points and usage details.
+
+# 4. Remove a Docker volume
+docker volume rm <volume_name>
+# Description: Removes a Docker volume. This will fail if the volume is in use by any container.
+
+# 5. Prune unused Docker volumes
+docker volume prune
+# Description: Removes all unused volumes (volumes not used by any containers).
+
+# 6. Mount a volume to a container
+docker run -d -v <volume_name>:/path/in/container <image_name>
+# Description: Mounts a Docker volume to a container's specific path (useful for persistent data).
+
+# 7. List containers using a specific volume
+docker ps --filter volume=<volume_name>
+# Description: Lists all running containers that are using the specified volume.
+
+# 8. Copy data to/from a volume
+docker cp <container_id>:<path_in_container> <local_path>
+# Description: Copy files or directories between a container and your local machine, including volumes.
 
