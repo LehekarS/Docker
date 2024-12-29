@@ -1,1 +1,14 @@
+Flask==2.1.1            # Web framework for building web applications
+Flask-SQLAlchemy==2.5.1  # SQLAlchemy integration for Flask (database handling)
+requests==2.26.0         # HTTP library for making requests to APIs
+Flask-Migrate==3.1.0     # Database migrations for Flask applications
+Flask-WTF==1.0.0         # Flask extension for working with web forms
+gunicorn==20.1.0        # WSGI HTTP server for deploying Python web apps (recommended for production)
+Flask-Login==0.5.0       # User session management for Flask applications
+Flask-Cors==3.1.1        # Cross-Origin Resource Sharing (CORS) support for Flask
+python-dotenv==0.19.2    # Read key-value pairs from .env files for configuration
+Jinja2==3.0.3            # Templating engine for Python (used by Flask)
+psycopg2-binary==2.9.1   # PostgreSQL database adapter for Python
+pymysql==1.0.2           # MySQL database adapter for Python (if you're using MySQL)
+celery==5.2.6            # Distributed task queue for handling asynchronous jobs
 
