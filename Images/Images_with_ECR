@@ -1,1 +1,26 @@
+# 1. Authenticate Docker to ECR
+aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region>.amazonaws.com
+# Example: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
+# Logs into your AWS ECR registry using AWS CLI.
+
+# 2. Create a Repository in ECR
+aws ecr create-repository --repository-name <repository_name> --region <region>
+# Example: aws ecr create-repository --repository-name my-repo --region us-east-1
+# Creates a new repository in AWS ECR.
+
+# 3. Build and Tag an Image for ECR
+docker build -t <image_name>:<tag> .
+docker tag <image_name>:<tag> <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository_name>:<tag>
+# Example: docker build -t my-app:1.0 . && docker tag my-app:1.0 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-repo:1.0
+# Builds a Docker image and tags it for ECR.
+
+# 4. Push an Image to ECR
+docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository_name>:<tag>
+# Example: docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-repo:1.0
+# Pushes a tagged Docker image to AWS ECR.
+
+# 5. Pull an Image from ECR
+docker pull <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository_name>:<tag>
+# Example: docker pull 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-repo:1.0
+# Pulls an image from AWS ECR.
 
